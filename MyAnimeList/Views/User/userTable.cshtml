@@ -1,0 +1,43 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Users List";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h2 class="mb-4">User List</h2>
+        </div>
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Email</th>
+
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="AnimeInfo" asp-action="userDetails" asp-route-UserID="@user.UserID" class="btn btn-link text-decoration-none">
+                                        <strong>@user.Username</strong>
+                                    </a>
+                                </td>
+                                <td>@user.Email</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

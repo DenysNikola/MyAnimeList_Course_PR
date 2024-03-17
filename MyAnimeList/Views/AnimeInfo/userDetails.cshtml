@@ -1,0 +1,49 @@
+﻿@model List<AnimeInfo>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h2 class="mb-4">Anime List</h2>
+        </div>
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Preview</th>
+                            <th class="text-center">Title</th>
+                            <th class="text-center">Score</th>
+
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var animeInfo in Model)
+                        {
+                            <tr>
+                            
+                                <td class="text-center">
+                                    @if (!string.IsNullOrEmpty(animeInfo.ImageUrl))
+                                    {
+                                        <a asp-controller="Anime" asp-action="AnimeDetails" asp-route-AnimeID="@animeInfo.AnimeID">
+                                            <img src="@animeInfo.ImageUrl" alt="@animeInfo.AnimeTitle" class="img-thumbnail" style="max-wAnimeIDth: 100px; max-height: 100px;">
+                                        </a>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-controller="Anime" asp-action="AnimeDetails" asp-route-AnimeID="@animeInfo.AnimeID" class="btn btn-link text-decoration-none">
+                                        <strong>@animeInfo.AnimeTitle</strong>
+                                    </a>
+                                </td>
+                                
+                                <td class="text-center">@animeInfo.Score</td>
+
+                                <!-- Add more columns as needed -->
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
